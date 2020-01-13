@@ -11,4 +11,13 @@
         Options All
         AllowOverride None
     </Directory>
+
+   <Directory /var/www/html/www.example.com/top_secret>
+    AuthType Basic
+    AuthName “Accès restreint aux utilisateurs authentifiés”
+    AuthBasicProvider ldap
+    AuthLDAPURL ldap://localhost/ou=Personnes,dc=mon-entreprise,cd=com?uid?sub
+    Require ip 192.168.0.3
+    Require valid-user
+   </Directory>
 </VirtualHost>
